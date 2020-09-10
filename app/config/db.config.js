@@ -2,7 +2,7 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "ezrepair",
+  DB: "kmitl_fixed",
   // DB: "node_mysql",
   dialect: "mysql",
   timezone: "gmt",

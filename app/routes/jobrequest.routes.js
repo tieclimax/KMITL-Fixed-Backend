@@ -29,5 +29,8 @@ module.exports = function (app) {
   // Delete all jobrequest
   app.delete("/api/", controller.deleteAll);
 
-  //   app.use("/api/tutorials", router);
+  //   Retrieve all building
+  app.get("/api/findAllBuilding/", controller.findAllBuilding);
+  //   Search requesters
+  app.get("/api/findRequester/", controller.findRequester);
 };

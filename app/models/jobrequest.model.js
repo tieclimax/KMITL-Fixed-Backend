@@ -9,17 +9,14 @@ module.exports = (sequelize, Sequelize) => {
     owner_job_id: {
       type: Sequelize.INTEGER,
     },
-    Photo_equipment: {
-      type: Sequelize.STRING,
-    },
-    Photo_location: {
-      type: Sequelize.STRING,
+    Photo_id: {
+      type: Sequelize.INTEGER,
     },
     Latitude: {
-      type: Sequelize.STRING,
+      type: Sequelize.DOUBLE,
     },
     Longitude: {
-      type: Sequelize.STRING,
+      type: Sequelize.DOUBLE,
     },
     Building: {
       type: Sequelize.STRING,
@@ -33,13 +30,13 @@ module.exports = (sequelize, Sequelize) => {
     Description_report: {
       type: Sequelize.STRING,
     },
-    Photo_post: {
-      type: Sequelize.STRING,
-    },
     Description_post: {
       type: Sequelize.STRING,
     },
     Job_status_ID: {
+      type: Sequelize.INTEGER,
+    },
+    current_status: {
       type: Sequelize.INTEGER,
     },
   });
