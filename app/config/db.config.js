@@ -3,7 +3,6 @@ module.exports = {
   USER: "root",
   PASSWORD: "",
   DB: "kmitl_fixed",
-  // DB: "node_mysql",
   dialect: "mysql",
   timezone: "gmt",
   pool: {
