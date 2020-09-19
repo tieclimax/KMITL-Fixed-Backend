@@ -77,7 +77,7 @@ exports.signin = (req, res) => {
         { id: user.id, username: user.username },
         config.secret,
         {
-          expiresIn: 360, //
+          expiresIn: 86400, //1 day
         }
       );
       var refreshtoken = jwt.sign({ id: user.id }, config.refreshsecret, {

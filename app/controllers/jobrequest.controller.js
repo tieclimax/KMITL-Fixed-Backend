@@ -255,3 +255,163 @@ exports.findJobBystatusID = (req, res) => {
   //       });
   //     });
 };
+
+exports.managerRead = (req, res) => {
+  const ID = req.body.ID;
+  const owner_job_id = req.body.owner_job_id;
+
+  db.sequelize
+    .query("CALL manager_read('" + ID + "','" + owner_job_id + "')")
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.managerAssignjobToSuperstaff = (req, res) => {
+  const ID = req.body.ID;
+  const owner_job_id = req.body.owner_job_id;
+
+  db.sequelize
+    .query(
+      "CALL manager_assign_job_to_super_staff('" +
+        ID +
+        "','" +
+        owner_job_id +
+        "')"
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.superstaffRead = (req, res) => {
+  const ID = req.body.ID;
+
+  db.sequelize
+    .query("CALL super_staff_read('" + ID + "')")
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.superstaffAssignjobToStaff = (req, res) => {
+  const ID = req.body.ID;
+  const owner_job_id = req.body.owner_job_id;
+
+  db.sequelize
+    .query(
+      "CALL super_staff_assign_job_to_staff('" +
+        ID +
+        "','" +
+        owner_job_id +
+        "')"
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.staffRead = (req, res) => {
+  const ID = req.body.ID;
+
+  db.sequelize
+    .query("CALL staff_read('" + ID + "')")
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.staffGetjob = (req, res) => {
+  const ID = req.body.ID;
+
+  db.sequelize
+    .query("CALL staff_get_job('" + ID + "')")
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.staffSendjob = (req, res) => {
+  const ID = req.body.ID;
+  const data_post1 = req.body.data_post1;
+  const data_post2 = req.body.data_post2;
+  const data_post3 = req.body.data_post3;
+  const description_post = req.body.description_post;
+  const job_status = req.body.job_status;
+
+  db.sequelize
+    .query(
+      "CALL staff_send_job('" +
+        ID +
+        "','" +
+        data_post1 +
+        "','" +
+        data_post2 +
+        "','" +
+        data_post3 +
+        "','" +
+        description_post +
+        "','" +
+        job_status +
+        "')"
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.CountDashboard = (req, res) => {
+  db.sequelize
+    .query("CALL count_dashboard()")
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};

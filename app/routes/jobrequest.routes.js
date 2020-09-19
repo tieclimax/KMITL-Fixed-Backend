@@ -33,4 +33,38 @@ module.exports = function (app) {
   app.get("/api/findAllBuilding/", controller.findAllBuilding);
   //   Search requesters
   app.get("/api/findRequester/", controller.findRequester);
+
+  //----------------------------Assign Flow-------------------------------//
+
+  //Manager read
+  app.post("/api/managerRead/", controller.managerRead);
+
+  //Manager assign job to super staff
+  app.post(
+    "/api/managerAssignjobToSuperstaff/",
+    controller.managerAssignjobToSuperstaff
+  );
+
+  //Super staff read
+  app.post("/api/superstaffRead/", controller.superstaffRead);
+
+  //Super staff Assign job To Staff
+  app.post(
+    "/api/superstaffAssignjobToStaff/",
+    controller.superstaffAssignjobToStaff
+  );
+
+  //Staff read
+  app.post("/api/staffRead/", controller.staffRead);
+
+  //Staff get job
+  app.post("/api/staffGetjob/", controller.staffGetjob);
+
+  //Staff Send job
+  app.post("/api/staffSendjob/", controller.staffSendjob);
+
+  // Count dashboard
+  app.get("/api/CountDashboard/", controller.CountDashboard);
+
+  //---------------------------- End Assign Flow-------------------------------//
 };
