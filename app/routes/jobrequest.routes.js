@@ -8,9 +8,6 @@ module.exports = function (app) {
     next();
   });
 
-  // Create a new jobrequest
-  app.post("/api/createjobrequest/", controller.create);
-
   // Retrieve all jobrequest
   app.get("/api/alljobrequest/", controller.findAll);
 
@@ -31,6 +28,57 @@ module.exports = function (app) {
 
   //   Retrieve all building
   app.get("/api/findAllBuilding/", controller.findAllBuilding);
-  //   Search requesters
-  app.get("/api/findRequester/", controller.findRequester);
+
+  // Count dashboard 
+  app.get("/api/CountDashboard/", controller.CountDashboard);
+
+  // History user
+  app.get("/api/Historyuser/", controller.Historyuser);
+
+  app.get("/api/dropdown/", controller.dropdown);
+
+  
+//------------------------------main flow--------------------------------------------------//
+
+  // Create a new jobrequest
+  app.post("/api/createjobrequest/", controller.create);
+
+  // Job To Manager
+  app.get("/api/JobToManager/", controller.JobToManager);
+
+  // Manager read
+  app.post("/api/managerRead/", controller.managerRead);
+
+  // Retrieve Superstaff for Manager
+  app.get("/api/ManagerSelectSuperstaff/", controller.ManagerSelectSuperstaff);
+
+  //Manager assign job to super staff
+  app.post("/api/managerAssignjobToSuperstaff/", controller.managerAssignjobToSuperstaff);
+
+  // Job To Superstaff
+  app.get("/api/JobToSuperstaff/", controller.JobToSuperstaff);
+
+  // Super staff read
+  app.post("/api/superstaffRead/", controller.superstaffRead);
+
+  // Retrieve Staff for Supperstaff
+  app.get("/api/SuperstaffSelectStaff/", controller.SuperstaffSelectStaff);
+
+  // Super staff Assign job To Staff
+  app.post("/api/superstaffAssignjobToStaff/", controller.superstaffAssignjobToStaff);
+
+  // Job To Staff
+  app.get("/api/JobToStaff/", controller.JobToStaff);
+
+  // Staff read
+  app.post("/api/staffRead/", controller.staffRead);
+
+  // Staff get job
+  app.post("/api/staffGetjob/", controller.staffGetjob);
+
+  //Staff Send job
+  app.post("/api/staffSendjob/", controller.staffSendjob);
+
+//------------------------------end main flow--------------------------------------------------//
+
 };

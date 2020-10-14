@@ -33,6 +33,7 @@ app.get("/", (req, res) => res.json({ message: "welcome To Giolab." }));
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/jobrequest.routes")(app);
+require("./app/routes/requester.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 
