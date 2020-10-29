@@ -17,6 +17,10 @@ module.exports = function (app) {
   // Retrieve a single jobrequest with id
   app.get("/api/jobrequest/:id", controller.findOne);
 
+  app.get("/api/findJobByjobID/:id", controller.findJobByjobID);
+
+  app.get("/api/alljobstatus/:id", controller.alljobstatus);
+
   // Update a jobrequest with id
   app.put("/api/updatejobrequest/:id", controller.updatejobrequest);
 
