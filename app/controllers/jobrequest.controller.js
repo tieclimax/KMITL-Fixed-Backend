@@ -70,6 +70,39 @@ exports.findOne = (req, res) => {
     });
 };
 
+exports.findJobByjobID = (req, res) => {
+  const id = req.params.id;
+  db.sequelize
+    .query(
+      "CALL findJobByjobID('" + id + "')"
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
+exports.alljobstatus = (req, res) => {
+  db.sequelize
+    .query(
+      "CALL alljobstatus()"
+    )
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving Jobrequests.",
+      });
+    });
+};
+
 // Update a Jobrequest by the id in the request
 exports.updatejobrequest = (req, res) => {
   const id = req.params.id;
