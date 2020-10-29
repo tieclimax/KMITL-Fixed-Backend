@@ -126,26 +126,19 @@ exports.deleteAll = (req, res) => { };
 // Find all published Jobrequest
 exports.findJobBystatusID = (req, res) => {
   const id = req.params.id;
-  Jobrequest.findAll({ where: { Job_status_ID: id } })
+  db.sequelize
+    .query(
+      "CALL findJobBystatusID('" + id + "')"
+    )
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Jobrequest.",
+          err.message || "Some error occurred while retrieving Jobrequests.",
       });
     });
-  //   Jobrequest.findAll({ where: { Job_status_ID: 10 } })
-  //     .then((data) => {
-  //       res.send(data);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).send({
-  //         message:
-  //           err.message || "Some error occurred while retrieving Jobrequest.",
-  //       });
-  //     });
 };
 
 
@@ -507,14 +500,15 @@ exports.JobToStaff = (req, res) => {
 };
 
 
-exports.dropdown = (req, res) => {
+ exports.dropdown =  (req, res) =>  {
   db.sequelize
     .query(
       "CALL dropdown()"
     )
-    .then((data) => {
-      all = manage(data);
+    .then((data) =>   {
+      all=  manage(data);
       res.send(all);
+      // console.log("response=> "+ all);
     })
     .catch((err) => {
       res.status(500).send({
@@ -525,9 +519,9 @@ exports.dropdown = (req, res) => {
 };
 
 
-function manage(data) {
+ function manage(data) {
 
-  // let ALL = '{"data":[]}';
+  let ALL = '{"data":[]}';
 
   let Rooms = [];
   let Floors = [];
@@ -554,11 +548,11 @@ function manage(data) {
     if (data[i].Building != data[i - 1].Building) {
       Buildings.push({ "Buliding": data[i].Building, Floors });
       Floors = [];
-    }
+    } 
   }
-  // var obj = JSON.parse(ALL);
-  // obj['data'].push({Buildings});
-  // ALL = JSON.stringify(obj);
-
-  return Buildings;
+  var obj = JSON.parse(ALL);
+  obj['data'].push({Buildings});
+  ALL = JSON.stringify(obj);
+  console.log("response=> "+ALL[0] );
+  return ALL;
 }
